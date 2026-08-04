@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="google-site-verification" content="kX-1kjm8YL-7SQQsDPWwunBMPdDKY3MohHzaTwkA4ck" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Freelance Rate & Tip Calculator | Free Finance Toolkit</title>
+  <meta name="description" content="Calculate your ideal freelance hourly rate and easily split tips and bills with our free online financial toolkit.">
+  <meta name="keywords" content="freelance rate calculator, tip splitter, bill splitter, hourly rate finder, finance tools">
+  <meta name="robots" content="index, follow">
+
+  <link rel="stylesheet" href="style.css">
+  <title>Multi-Tool Financial Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="calculator-container">
+    
+    <h1>Freelance & Finance Toolkit</h1>
+
+    <!-- Global Currency Selector -->
+    <div class="currency-selector">
+      <label for="currency-select">Select Currency: </label>
+      <select id="currency-select">
+        <option value="₹">₹ (INR - Indian Rupee)</option>
+        <option value="$">$ (USD - US Dollar)</option>
+        <option value="€">€ (EUR - Euro)</option>
+        <option value="£">£ (GBP - British Pound)</option>
+      </select>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="tab-buttons">
+      <button class="tab-btn active" onclick="showTab('rate-tab')">Hourly Rate</button>
+      <button class="tab-btn" onclick="showTab('tip-tab')">Tip Splitter</button>
+    </div>
+
+    <!-- CALCULATOR 1: Freelance Rate Calculator -->
+    <div id="rate-tab" class="tab-content active">
+      <h2>Freelance Hourly Rate Calculator</h2>
+      
+      <label for="income">Target Monthly Income:</label>
+      <input type="number" id="income" placeholder="e.g. 50000">
+
+      <label for="expenses">Monthly Business Expenses:</label>
+      <input type="number" id="expenses" placeholder="e.g. 5000">
+
+      <label for="hours">Billable Hours Per Week:</label>
+      <input type="number" id="hours" placeholder="e.g. 20">
+
+      <button onclick="calculateRate()">Calculate Hourly Rate</button>
+
+      <div class="result-box" id="rate-result">
+        Enter your details above and click calculate.
+      </div>
+    </div>
+
+    <!-- CALCULATOR 2: Tip & Bill Splitter -->
+    <div id="tip-tab" class="tab-content">
+      <h2>Tip & Bill Splitter</h2>
+
+      <label for="bill">Total Bill Amount:</label>
+      <input type="number" id="bill" placeholder="e.g. 1500">
+
+      <label for="tip-percent">Tip Percentage (%):</label>
+      <input type="number" id="tip-percent" placeholder="e.g. 10">
+
+      <label for="people">Number of People:</label>
+      <input type="number" id="people" placeholder="e.g. 3">
+
+      <button onclick="calculateTip()">Calculate Split</button>
+
+      <div class="result-box" id="tip-result">
+        Enter your bill details above and click calculate.
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+        
