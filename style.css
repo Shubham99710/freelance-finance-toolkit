@@ -133,39 +133,74 @@ button:hover {
     text-align: center;
 }
 
-/* Theme Toggle Button Style */
+/* Theme Toggle Button */
 .theme-btn {
-  background-color: #333;
-  color: #fff;
-  border: none;
+  background: #2b2d42;
+  color: #ffffff;
+  border: 1px solid #3d405b;
   padding: 8px 16px;
   border-radius: 20px;
   cursor: pointer;
-  font-weight: bold;
-  margin-bottom: 15px;
-  transition: background-color 0.3s ease;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* Dark Mode Color Overrides */
+.theme-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Base Body Transition */
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Modern Dark Theme */
 body.dark-mode {
-  background-color: #121212;
-  color: #e0e0e0;
+  background-color: #0f172a; /* Deep slate background */
+  color: #f8fafc;
 }
 
-body.dark-mode .calculator-card {
-  background-color: #1e1e1e;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  color: #ffffff;
+body.dark-mode .container {
+  background-color: #1e293b; /* Card container background */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  border: 1px solid #334155;
+}
+
+body.dark-mode h1, 
+body.dark-mode h2, 
+body.dark-mode label {
+  color: #f1f5f9;
 }
 
 body.dark-mode input, 
 body.dark-mode select {
-  background-color: #2a2a2a;
-  color: #ffffff;
-  border-color: #444;
+  background-color: #0f172a;
+  color: #f8fafc;
+  border: 1px solid #334155;
+}
+
+body.dark-mode input:focus, 
+body.dark-mode select:focus {
+  border-color: #38bdf8;
+  outline: none;
+}
+
+body.dark-mode .calculator-card {
+  background-color: #1e293b;
+}
+
+body.dark-mode .result-box {
+  background-color: #0f172a;
+  border-left: 4px solid #38bdf8;
+  color: #38bdf8;
 }
 
 body.dark-mode .theme-btn {
-  background-color: #f1f1f1;
-  color: #222;
+  background-color: #f8fafc;
+  color: #0f172a;
+  border-color: #e2e8f0;
 }

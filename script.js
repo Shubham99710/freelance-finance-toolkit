@@ -131,7 +131,7 @@ if (calcInterestBtn) {
 // Dark Mode Toggle Logic
 const themeToggleBtn = document.getElementById('theme-toggle');
 
-// Check for previously saved theme preference
+// Load saved theme preference
 if (localStorage.getItem('theme') === 'dark') {
   document.body.classList.add('dark-mode');
   if (themeToggleBtn) themeToggleBtn.textContent = '☀️ Light Mode';
