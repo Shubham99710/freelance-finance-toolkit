@@ -127,3 +127,26 @@ if (calcInterestBtn) {
     document.getElementById('interest-result').style.display = 'block';
   });
 }
+
+// Dark Mode Toggle Logic
+const themeToggleBtn = document.getElementById('theme-toggle');
+
+// Check for previously saved theme preference
+if (localStorage.getItem('theme') === 'dark') {
+  document.body.classList.add('dark-mode');
+  if (themeToggleBtn) themeToggleBtn.textContent = '☀️ Light Mode';
+}
+
+if (themeToggleBtn) {
+  themeToggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    
+    if (document.body.classList.contains('dark-mode')) {
+      themeToggleBtn.textContent = '☀️ Light Mode';
+      localStorage.setItem('theme', 'dark');
+    } else {
+      themeToggleBtn.textContent = '🌙 Dark Mode';
+      localStorage.setItem('theme', 'light');
+    }
+  });
+}
