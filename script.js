@@ -1,22 +1,26 @@
-// Function 1: Switch between calculator tabs
-function showTab(tabId) {
-  const contents = document.querySelectorAll('.tab-content');
-  for (let i = 0; i < contents.length; i++) {
-    if (contents[i]) contents[i].classList.remove('active');
-  }
+// Tab Switching Logic
+const navButtons = document.querySelectorAll('.nav-btn');
+const calculatorCards = document.querySelectorAll('.calculator-card');
 
-  const buttons = document.querySelectorAll('.tab-btn');
-  for (let i = 0; i < buttons.length; i++) {
-    if (buttons[i]) buttons[i].classList.remove('active');
-  }
+navButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    // Remove active class from all buttons
+    navButtons.forEach(btn => btn.classList.remove('active'));
+    
+    // Add active class to clicked button
+    button.classList.add('active');
 
-  const selectedTab = document.getElementById(tabId);
-  if (selectedTab) selectedTab.classList.add('active');
+    // Hide all calculator cards
+    calculatorCards.forEach(card => card.style.display = 'none');
 
-  if (window.event && window.event.currentTarget) {
-    window.event.currentTarget.classList.add('active');
-  }
-}
+    // Show selected calculator card
+    const targetTab = button.getAttribute('data-tab');
+    const activeCard = document.getElementById(targetTab);
+    if (activeCard) {
+      activeCard.style.display = 'block';
+    }
+  });
+});
 
 // Function 2: Get Currency Symbol Safely
 function getCurrency() {
@@ -83,4 +87,43 @@ function calculateTip() {
   const perPerson = (grandTotal / people).toFixed(2);
 
   resultBox.innerText = `Total with tip: ${currency}${grandTotal.toFixed(2)} | Each person pays: ${currency}${perPerson}`;
+}
+
+// Calculator 3: Compound Interest
+const calcInterestBtn = document.getElementById('calc-interest-btn');
+
+if (calcInterestBtn) {
+  calcInterestBtn.addEventListener('click', () => {
+    const principal = parseFloat(document.getElementById('initial-deposit').value) || 0;
+    const monthlyContrib = parseFloat(document.getElementById('monthly-contribution').value) || 0;
+    const annualRate = parseFloat(document.getElementById('interest-rate').value) || 0;
+    const years = parseFloat(document.getElementById('investment-years').value) || 0;
+
+    if (years <= 0) {
+      alert('Please enter a valid investment period in years.');
+      return;
+    }
+
+    const months = years * 12;
+    const monthlyRate = annualRate / 100 / 12;
+    
+    // Future value of initial deposit
+    let futureValue = principal * Math.pow(1 + monthlyRate, months);
+    
+    // Future value of monthly contributions
+    if (monthlyRate > 0) {
+      futureValue += monthlyContrib * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate);
+    } else {
+      futureValue += monthlyContrib * months;
+    }
+
+    const totalDeposited = principal + (monthlyContrib * months);
+    const totalInterest = futureValue - totalDeposited;
+
+    // Display results formatted to 2 decimal places
+    document.getElementById('total-value').textContent = futureValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    document.getElementById('total-interest').textContent = totalInterest.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    
+    document.getElementById('interest-result').style.display = 'block';
+  });
 }

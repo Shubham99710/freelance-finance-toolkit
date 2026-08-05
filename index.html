@@ -39,13 +39,14 @@
     </div>
 
     <!-- Navigation Tabs -->
-    <div class="tab-buttons">
-      <button class="tab-btn active" onclick="showTab('rate-tab')">Hourly Rate</button>
-      <button class="tab-btn" onclick="showTab('tip-tab')">Tip Splitter</button>
+    <div class="nav-buttons">
+      <button class="nav-btn active" data-tab="hourly-calculator">Hourly Rate</button>
+      <button class="nav-btn" data-tab="tip-calculator">Tip Splitter</button>
+      <button class="nav-btn" data-tab="compound-calculator">Compound Interest</button>
     </div>
 
     <!-- CALCULATOR 1: Freelance Rate Calculator -->
-    <div id="rate-tab" class="tab-content active">
+    <div id="hourly-calculator" class="calculator-card">
       <h2>Freelance Hourly Rate Calculator</h2>
       
       <label for="income">Target Monthly Income:</label>
@@ -65,7 +66,7 @@
     </div>
 
     <!-- CALCULATOR 2: Tip & Bill Splitter -->
-    <div id="tip-tab" class="tab-content">
+    <div id="tip-calculator" class="calculator-card" style="display: none;">
       <h2>Tip & Bill Splitter</h2>
 
       <label for="bill">Total Bill Amount:</label>
@@ -84,6 +85,38 @@
       </div>
     </div>
 
+    <!-- Calculator 3: Compound Interest Calculator -->
+    <div id="compound-calculator" class="calculator-card" style="display: none;">
+      <h2>Compound Interest Calculator</h2>
+  
+  <div class="input-group">
+    <label for="initial-deposit">Initial Investment ($):</label>
+    <input type="number" id="initial-deposit" placeholder="e.g. 1000">
+  </div>
+
+  <div class="input-group">
+    <label for="monthly-contribution">Monthly Contribution ($):</label>
+    <input type="number" id="monthly-contribution" placeholder="e.g. 100">
+  </div>
+
+  <div class="input-group">
+    <label for="interest-rate">Annual Interest Rate (%):</label>
+    <input type="number" id="interest-rate" placeholder="e.g. 7" step="0.1">
+  </div>
+
+  <div class="input-group">
+    <label for="investment-years">Investment Period (Years):</label>
+    <input type="number" id="investment-years" placeholder="e.g. 10">
+  </div>
+
+  <button id="calc-interest-btn">Calculate Future Value</button>
+
+  <div class="result-box" id="interest-result" style="display: none;">
+    <p>Total Future Value: <strong id="total-value">$0.00</strong></p>
+    <p>Total Interest Earned: <strong id="total-interest">$0.00</strong></p>
+  </div>
+</div>
+    
   </div>
 
   <script src="script.js"></script>
